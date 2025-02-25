@@ -141,7 +141,7 @@
         <!--Saved-->
         <scene sceneID="Pzi-rw-mbQ">
             <objects>
-                <viewController id="0SZ-Rc-Zue" sceneMemberID="viewController">
+                <viewController id="0SZ-Rc-Zue" customClass="SavedVC" customModule="NewsYork" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FLx-wr-itg">
                         <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -168,7 +168,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KGM-aA-CDu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1906" y="268"/>
+            <point key="canvasLocation" x="1905" y="315"/>
         </scene>
         <!--Home-->
         <scene sceneID="c9b-Gf-Bp1">
@@ -190,6 +190,7 @@
         <scene sceneID="fO9-E3-YYy">
             <objects>
                 <tabBarController id="cSh-g7-7bb" customClass="TabBarVC" customModule="NewsYork" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="pfg-Rc-hYA"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Ag-Mh-3fY">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

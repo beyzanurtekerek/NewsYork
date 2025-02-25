@@ -8,22 +8,16 @@
 import UIKit
 
 class CategoryVC: UIViewController {
+    
+    private let baseVC = BaseVC()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addChild(baseVC)
+        view.addSubview(baseVC.view)
+        baseVC.didMove(toParent: self)
 
-        // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
