@@ -17,11 +17,15 @@ class SignupVC: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     
+    private var eyeButtonForPassword = UIButton(type: .custom)
+    private var eyeButtonForConfirmPassword = UIButton(type: .custom)
+    
     private var viewModel = SignupVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewModel()
+        addPasswordVisibilityButton()
     }
     
     func setupViewModel() {
@@ -38,6 +42,32 @@ class SignupVC: UIViewController {
                 })
             }
         }
+    }
+    
+    func addPasswordVisibilityButton() {
+        eyeButtonForPassword.setImage(UIImage(systemName: "eye"), for: .normal)
+        eyeButtonForPassword.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
+        eyeButtonForPassword.tintColor = .systemGray
+        passwordTextField.rightView = eyeButtonForPassword
+        passwordTextField.rightViewMode = .always
+        
+        eyeButtonForConfirmPassword.setImage(UIImage(systemName: "eye"), for: .normal)
+        eyeButtonForConfirmPassword.addTarget(self, action: #selector(toggleConfirmPasswordVisibility), for: .touchUpInside)
+        eyeButtonForConfirmPassword.tintColor = .systemGray
+        confirmPasswordTextField.rightView = eyeButtonForConfirmPassword
+        confirmPasswordTextField.rightViewMode = .always
+    }
+    
+    @objc func togglePasswordVisibility() {
+        passwordTextField.isSecureTextEntry.toggle()
+        let eyeImageName = passwordTextField.isSecureTextEntry ? "eye" : "eye.slash"
+        eyeButtonForPassword.setImage(UIImage(systemName: eyeImageName), for: .normal)
+    }
+    
+    @objc func toggleConfirmPasswordVisibility() {
+        confirmPasswordTextField.isSecureTextEntry.toggle()
+        let eyeImageName = confirmPasswordTextField.isSecureTextEntry ? "eye" : "eye.slash"
+        eyeButtonForConfirmPassword.setImage(UIImage(systemName: eyeImageName), for: .normal)
     }
     
     @IBAction func signupButtonClicked(_ sender: Any) {

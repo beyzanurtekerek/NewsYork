@@ -15,6 +15,8 @@ class LoginVC: UIViewController {
     @IBOutlet weak var signupLinkButton: UIButton!
     @IBOutlet weak var forgotLinkButton: UIButton!
     
+    private var eyeButtonForPassword = UIButton(type: .custom)
+    
     private var viewModel = LoginVM()
     
     override func viewDidLoad() {
@@ -22,6 +24,7 @@ class LoginVC: UIViewController {
         
         setupBindings()
         checkRememberMe()
+        addPasswordVisibilityButton()
 
     }
     
@@ -35,6 +38,20 @@ class LoginVC: UIViewController {
                 }
             }
         }
+    }
+    
+    func addPasswordVisibilityButton() {
+        eyeButtonForPassword.setImage(UIImage(systemName: "eye"), for: .normal)
+        eyeButtonForPassword.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
+        eyeButtonForPassword.tintColor = .systemGray
+        passwordTextField.rightView = eyeButtonForPassword
+        passwordTextField.rightViewMode = .always
+    }
+    
+    @objc func togglePasswordVisibility() {
+        passwordTextField.isSecureTextEntry.toggle()
+        let eyeImageName = passwordTextField.isSecureTextEntry ? "eye" : "eye.slash"
+        eyeButtonForPassword.setImage(UIImage(systemName: eyeImageName), for: .normal)
     }
     
     func checkRememberMe() {
