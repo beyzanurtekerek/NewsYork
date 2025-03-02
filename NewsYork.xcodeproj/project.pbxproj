@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D820454D2D71F08B0099D927 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = D820454C2D71F08B0099D927 /* SDWebImage */; };
 		D8D4DB032D67A16D0020EBD2 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D8D4DB022D67A16D0020EBD2 /* FirebaseAnalytics */; };
 		D8D4DB052D67A16D0020EBD2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D8D4DB042D67A16D0020EBD2 /* FirebaseAuth */; };
 		D8D4DB072D67A16D0020EBD2 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = D8D4DB062D67A16D0020EBD2 /* FirebaseCore */; };
@@ -77,6 +78,7 @@
 				D8D4DB032D67A16D0020EBD2 /* FirebaseAnalytics in Frameworks */,
 				D8D4DB072D67A16D0020EBD2 /* FirebaseCore in Frameworks */,
 				D8D4DB092D67A16D0020EBD2 /* FirebaseDatabase in Frameworks */,
+				D820454D2D71F08B0099D927 /* SDWebImage in Frameworks */,
 				D8D4DB0B2D67A16D0020EBD2 /* FirebaseFirestore in Frameworks */,
 				D8D4DB052D67A16D0020EBD2 /* FirebaseAuth in Frameworks */,
 				D8D4DB0D2D67A16D0020EBD2 /* FirebaseStorage in Frameworks */,
@@ -146,6 +148,7 @@
 				D8D4DB082D67A16D0020EBD2 /* FirebaseDatabase */,
 				D8D4DB0A2D67A16D0020EBD2 /* FirebaseFirestore */,
 				D8D4DB0C2D67A16D0020EBD2 /* FirebaseStorage */,
+				D820454C2D71F08B0099D927 /* SDWebImage */,
 			);
 			productName = NewsYork;
 			productReference = D8D4DAC82D679C400020EBD2 /* NewsYork.app */;
@@ -231,6 +234,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				D8D4DB012D67A16D0020EBD2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				D820454B2D71F08B0099D927 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = D8D4DAC92D679C400020EBD2 /* Products */;
@@ -607,6 +611,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D820454B2D71F08B0099D927 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.21.0;
+			};
+		};
 		D8D4DB012D67A16D0020EBD2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -618,6 +630,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D820454C2D71F08B0099D927 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D820454B2D71F08B0099D927 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
 		D8D4DB022D67A16D0020EBD2 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D8D4DB012D67A16D0020EBD2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
