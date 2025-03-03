@@ -213,7 +213,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="HaJ-rF-65h">
-                                                    <rect key="frame" x="20" y="195" width="284" height="65"/>
+                                                    <rect key="frame" x="16" y="175" width="267" height="65"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="publishedDateLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nM5-sE-KL3">
                                                             <rect key="frame" x="0.0" y="0.0" width="151.66666666666666" height="20.333333333333332"/>
@@ -237,9 +237,9 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="HaJ-rF-65h" firstAttribute="leading" secondItem="eAG-r5-fgf" secondAttribute="leading" constant="20" id="5Sx-k6-cCb"/>
-                                                <constraint firstAttribute="trailing" secondItem="HaJ-rF-65h" secondAttribute="trailing" constant="16" id="HoO-x3-Pcx"/>
-                                                <constraint firstAttribute="bottom" secondItem="HaJ-rF-65h" secondAttribute="bottom" constant="10" id="fFN-yn-FC2"/>
+                                                <constraint firstItem="HaJ-rF-65h" firstAttribute="leading" secondItem="eAG-r5-fgf" secondAttribute="leading" constant="16" id="5Sx-k6-cCb"/>
+                                                <constraint firstAttribute="trailing" secondItem="HaJ-rF-65h" secondAttribute="trailing" constant="37" id="HoO-x3-Pcx"/>
+                                                <constraint firstAttribute="bottom" secondItem="HaJ-rF-65h" secondAttribute="bottom" constant="30" id="fFN-yn-FC2"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="320" height="270"/>

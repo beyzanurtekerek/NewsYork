@@ -38,6 +38,13 @@ class BreakingNewsCell: UICollectionViewCell {
         descriptionLabel.text = article.abstract
         publishedDateLabel.text = formatDate(article.publishedDate)
         
+        contentView.layer.cornerRadius = 10
+        contentView.layer.masksToBounds = false
+        contentView.layer.shadowColor = UIColor.black.cgColor
+        contentView.layer.shadowOpacity = 0.3
+        contentView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        contentView.layer.shadowRadius = 5
+        
         if let imageUrl = article.imageUrl, !imageUrl.isEmpty {
             loadImage(from: imageUrl)
         } else {

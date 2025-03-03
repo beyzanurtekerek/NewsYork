@@ -26,6 +26,9 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
         setupCollectionView()
         setupTableView()
         setupBindings()
+        
+        showLoadingIndicator()
+        
         viewModel.fetchBreakingNews()
         
         pageControl.numberOfPages = viewModel.breakingNewsArticles.count
@@ -53,16 +56,32 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
     func setupBindings() {
         viewModel.onDataFetched = { [weak self] in
             guard let self = self else { return }
+            
+            self.hideLoadingIndicator()
+            
             self.collectionView.reloadData()
             self.tableView.reloadData()
             
             self.pageControl.numberOfPages = self.viewModel.breakingNewsArticles.count
             self.pageControl.currentPage = 0
         }
+        
+        viewModel.onDataError = { [weak self] error in
+            guard let self = self else { return }
+            
+            self.hideLoadingIndicator()
+            self.showErrorAlert(message: error.localizedDescription)
+        }
+    }
+    
+    func showErrorAlert(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView == collectionView {  // Sadece collectionView için çalıştır
+        if scrollView == collectionView {
             let pageIndex = round(scrollView.contentOffset.x / scrollView.frame.width)
             pageControl.currentPage = Int(pageIndex)
         }

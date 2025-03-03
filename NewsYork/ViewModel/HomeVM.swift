@@ -15,6 +15,7 @@ class HomeVM {
     var recommendedArticles: [NewsArticle] = []   // Recommendation için
     
     var onDataFetched: (() -> Void)?
+    var onDataError: ((Error) -> Void)?
     
     func fetchBreakingNews() {
         newsService.fetchTopStories { [weak self] result in
@@ -25,7 +26,9 @@ class HomeVM {
                     self?.recommendedArticles = Array(articles.dropFirst(10)) // İlk 10 haber hariç, geri kalanlar Recommendation kısmında
                     self?.onDataFetched?()
                 case .failure(let error):
-                    print("Error: \(error.localizedDescription)")
+                    DispatchQueue.main.async {
+                        self?.onDataError?(error)
+                    }
                 }
             }
         }
