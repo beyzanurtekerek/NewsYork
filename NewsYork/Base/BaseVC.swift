@@ -74,13 +74,17 @@ class BaseVC: UIViewController {
     }
     
     private func navigateToLoginScreen() {
-        let loginVC = LoginVC()
-        loginVC.modalPresentationStyle = .fullScreen
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC else { return }
 
+        loginVC.modalPresentationStyle = .fullScreen
+        
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let window = windowScene.windows.first {
-            window.rootViewController = loginVC
-            window.makeKeyAndVisible()
+            DispatchQueue.main.async {
+                window.rootViewController = loginVC
+                window.makeKeyAndVisible()
+            }
         }
     }
     

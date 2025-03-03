@@ -7,13 +7,14 @@
 
 import UIKit
 
-class HomeVC: UIViewController {
+class HomeVC: UIViewController, UIScrollViewDelegate {
     
     private let baseVC = BaseVC()
     private let viewModel = HomeVM()
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var pageControl: UIPageControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,9 @@ class HomeVC: UIViewController {
         setupTableView()
         setupBindings()
         viewModel.fetchBreakingNews()
+        
+        pageControl.numberOfPages = viewModel.breakingNewsArticles.count
+        pageControl.currentPage = 0
  
     }
 
@@ -48,8 +52,19 @@ class HomeVC: UIViewController {
     
     func setupBindings() {
         viewModel.onDataFetched = { [weak self] in
-            self?.collectionView.reloadData()
-            self?.tableView.reloadData()
+            guard let self = self else { return }
+            self.collectionView.reloadData()
+            self.tableView.reloadData()
+            
+            self.pageControl.numberOfPages = self.viewModel.breakingNewsArticles.count
+            self.pageControl.currentPage = 0
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == collectionView {  // Sadece collectionView için çalıştır
+            let pageIndex = round(scrollView.contentOffset.x / scrollView.frame.width)
+            pageControl.currentPage = Int(pageIndex)
         }
     }
 }
@@ -70,13 +85,13 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width - 20
-        let height = collectionView.frame.height - 40
+        let width = collectionView.frame.width - 15
+        let height = collectionView.frame.height
         return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        return 7
     }
 }
 

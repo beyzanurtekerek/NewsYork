@@ -21,7 +21,7 @@ class BreakingNewsCell: UICollectionViewCell {
     }
     
     func setupUI() {
-        imageView.layer.cornerRadius = 8
+        imageView.layer.cornerRadius = 5
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill // fit kullanma gelmiyor
 
