@@ -86,6 +86,18 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
             pageControl.currentPage = Int(pageIndex)
         }
     }
+    
+    func navigateToDetailVC(with article: NewsArticle) {
+        performSegue(withIdentifier: "toDetailVC", sender: article)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailVC",
+           let detailVC = segue.destination as? DetailVC,
+           let article = sender as? NewsArticle {
+            detailVC.article = article
+        }
+    }
 }
 
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -112,8 +124,12 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 7
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedArticle = viewModel.breakingNewsArticles[indexPath.item]
+        navigateToDetailVC(with: selectedArticle)
+    }
 }
-
 extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.recommendedArticles.count
@@ -133,4 +149,10 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedArticle = viewModel.recommendedArticles[indexPath.row]
+        navigateToDetailVC(with: selectedArticle)
+    }
+    
 }
