@@ -1,4 +1,4 @@
-# News York App
+# News York App (tamamlanamadı)
 News York App, kullanıcıların New York Times API üzerinden en güncel başlıkları ve detaylı makaleleri görüntüleyebileceği bir haber agregatörü uygulamasıdır. Kullanıcılar, e-posta ve şifre ile giriş yapabilir, haberleri görüntüleyebilir ve makaleleri favorilerine ekleyebilirler. Ayrıca, kategori filtreleme ve arama fonksiyonu ile kullanıcı deneyimini zenginleştirir.
 
 Uygulama, UIKit kullanılarak geliştirilmiş ve MVVM mimarisi takip edilerek sürdürülebilir bir kod yapısı sağlanmıştır. Kullanıcı kimlik doğrulaması ve veri yönetimi için Firebase kullanılmıştır.
